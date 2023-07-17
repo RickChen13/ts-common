@@ -125,3 +125,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# pure
+.git
+test
+.gitattributes
+gitattributes
+LICENSE
+package.json
+README.MD
+tsconfig.json
+tslint.json
+yarn.lock
