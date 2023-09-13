@@ -24,7 +24,6 @@ class WaitGroup {
         if (taskNum >= 1) {
             this.taskNum += taskNum;
         }
-
     }
 
     done() {
