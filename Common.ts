@@ -25,10 +25,29 @@ export const deepCopy = <T>(target: T): T => {
     return target;
 };
 
+/**
+ * @param time microtime
+ * @returns 
+ */
 export const sleep = (time: number) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve('');
         }, time);
     });
+}
+
+/**
+ * @param { Promise } promise
+ * @return { Promise }
+ */
+export const go = async <T, Error>(promise: Promise<T>): Promise<[Error, undefined] | [null, T]> => {
+    try {
+        const data = await promise;
+        const result: [null, T] = [null, data];
+        return result;
+    } catch (err: any) {
+        const result_1: [Error, undefined] = [err, undefined];
+        return result_1;
+    }
 }
