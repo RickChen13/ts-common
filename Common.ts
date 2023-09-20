@@ -24,3 +24,11 @@ export const deepCopy = <T>(target: T): T => {
     }
     return target;
 };
+
+export const sleep = (time: number) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('');
+        }, time);
+    });
+}
