@@ -23,6 +23,15 @@ class LocalStorage {
     static getLocalStorage(cname: string): string | null {
         return localStorage.getItem(cname);
     }
+
+    /**
+     * 移除一个对象
+     * 
+     * @param cname 
+     */
+    static remove(cname: string) {
+        localStorage.removeItem(cname);
+    }
 }
 
 export default LocalStorage;
