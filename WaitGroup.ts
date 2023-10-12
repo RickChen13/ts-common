@@ -1,14 +1,14 @@
-let _resolve: any = null;
+
 
 class WaitGroup {
-    private taskNum: number;
+    #taskNum: number;
+    #_resolve: any = null;
+    #resolve: (value: unknown) => void | null = this.#_resolve;
 
-    private resolve: (value: unknown) => void | null = _resolve;
-
-    private check() {
-        if (this.taskNum == 0) {
-            if (typeof (this.resolve) == "function") {
-                this.resolve(this.taskNum);
+    #check() {
+        if (this.#taskNum == 0) {
+            if (typeof (this.#resolve) == "function") {
+                this.#resolve(this.#taskNum);
             }
         }
     }
@@ -17,26 +17,26 @@ class WaitGroup {
         if (taskNum < 0) {
             taskNum = 0;
         }
-        this.taskNum = taskNum;
+        this.#taskNum = taskNum;
     }
 
     add(taskNum: number = 1) {
         if (taskNum >= 1) {
-            this.taskNum += taskNum;
+            this.#taskNum += taskNum;
         }
     }
 
     done() {
-        if (this.taskNum >= 1) {
-            this.taskNum -= 1;
+        if (this.#taskNum >= 1) {
+            this.#taskNum -= 1;
         }
-        this.check();
+        this.#check();
     }
 
     wait() {
         return new Promise((resolve) => {
-            this.resolve = resolve;
-            this.check();
+            this.#resolve = resolve;
+            this.#check();
         });
     }
 }

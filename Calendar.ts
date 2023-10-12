@@ -1,4 +1,4 @@
-interface DayInfo {
+export interface DayInfo {
     //阳历年月日
     date: string
     //农历年月日

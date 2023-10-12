@@ -5,7 +5,10 @@ class Time {
 	 * @param date 
 	 * @returns 
 	 */
-	static getYear(date: string | number | Date) {
+	static getYear(date: string | number | Date | null = null) {
+		if (date == null) {
+			date = this.microtime();
+		}
 		const thisDate = new Date(date);
 		const year = thisDate.getFullYear();
 		return year;
@@ -16,7 +19,10 @@ class Time {
 	 * @param date 
 	 * @returns 
 	 */
-	static getYmdHis(date: number) {
+	static getYmdHis(date: number | null = null) {
+		if (date == null) {
+			date = this.microtime();
+		}
 		const thisDate = new Date(date);
 		const Y = thisDate.getFullYear();
 		const m = this.formatZero(thisDate.getMonth() + 1, 2);
@@ -26,6 +32,25 @@ class Time {
 		const s = this.formatZero(thisDate.getSeconds(), 2);
 		const YmdHis = `${Y}-${m}-${d} ${H}:${i}:${s}`;
 		return YmdHis;
+	}
+
+	/**
+	 * 获取日期信息
+	 * @param date 
+	 * @returns 
+	 */
+	static getDayInfo(date: number | null = null) {
+		if (date == null) {
+			date = this.microtime();
+		}
+		const thisDate = new Date(date);
+		const Y = thisDate.getFullYear();
+		const m = thisDate.getMonth() + 1;
+		const d = thisDate.getDate();
+		const H = thisDate.getHours();
+		const i = thisDate.getMinutes();
+		const s = thisDate.getSeconds();
+		return { Y, m, d, H, i, s };
 	}
 
 	/**

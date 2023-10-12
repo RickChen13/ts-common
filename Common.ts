@@ -1,5 +1,6 @@
 /**
- * 深拷贝
+ * 深拷贝函数
+ * 
  * @param target 
  * @returns 
  */
@@ -26,6 +27,8 @@ export const deepCopy = <T>(target: T): T => {
 };
 
 /**
+ * 睡眠函数
+ * 
  * @param time microtime
  * @returns 
  */
@@ -38,6 +41,8 @@ export const sleep = (time: number) => {
 }
 
 /**
+ * 使用`await`等待异步函数时，如果异步函数内发生异常则将会被捕获错误并返回（与`golang`相似）
+ * 
  * @param { Promise } promise
  * @return { Promise }
  */
