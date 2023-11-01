@@ -97,4 +97,5 @@ class Time {
 		return result;
 	}
 }
+
 export default Time;

@@ -70,7 +70,7 @@ export const DateCountdown = (festivals: string[], cFestivals: DateCountdown_Cus
             Term,
             diffDay,
         };
-    }
+    };
 
     for (let index = 0; index < dayNum; index++) {
         let _time = time + index * 60 * 60 * 24 * 1000;
@@ -138,11 +138,11 @@ export const DateCountdown = (festivals: string[], cFestivals: DateCountdown_Cus
                 array.pop();
             }
         }
-    }
+    };
 
     checkArray();
     return array;
-}
+};
 //#endregion
 
 /**
@@ -185,7 +185,8 @@ export const sleep = (time: number) => {
             resolve('');
         }, time);
     });
-}
+};
+
 
 /**
  * 使用`await`等待异步函数时，如果异步函数内发生异常则将会被捕获错误并返回（与`golang`相似）
@@ -202,4 +203,4 @@ export const go = async <T, Error>(promise: Promise<T>): Promise<[Error, undefin
         const result_1: [Error, undefined] = [err, undefined];
         return result_1;
     }
-}
+};

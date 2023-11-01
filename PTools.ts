@@ -7,4 +7,4 @@ export const in_array = (value: any, array: any) => {
         }
     }
     return false;
-}
+};

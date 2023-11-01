@@ -1,5 +1,3 @@
-
-
 class WaitGroup {
     #taskNum: number;
     #_resolve: any = null;
