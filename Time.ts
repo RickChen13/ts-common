@@ -82,6 +82,19 @@ class Time {
 		return Math.round(Time.microtime() / 1000);
 	}
 
+	static getMonday(date: number | null = null) {
+		if (date == null) {
+			date = this.microtime();
+		}
+		let today = new Date(date);
+		let currentDay = today.getDay();
+		currentDay = currentDay == 0 ? 7 : currentDay;
+		let start = new Date(today);
+		start.setDate(today.getDate() - currentDay + 1);
+		let ymd = Time.getDayInfo(start.getTime());
+		return Date.parse(`${ymd.Y}-${ymd.m}-${ymd.d} 00:00:00`);
+	}
+
 	/**
 	 * 获取两个时间的差值(如果end<=str,将返回0)
 	 * 
