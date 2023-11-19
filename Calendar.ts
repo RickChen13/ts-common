@@ -46,6 +46,12 @@ export interface DayInfo {
     astro: string
 }
 
+export interface Festival {
+    [key: string]: {
+        title: string;
+    };
+}
+
 /**
  * @1900-2100区间内的公历、农历互转
  * @公历转农历：calendar.solar2lunar(1987,11,01); //[you can ignore params of prefix 0]
@@ -623,12 +629,12 @@ class Calendar {
     /**
      * 阳历节日
      */
-    festival: any;
+    festival: Festival;
 
     /**
      * 农历节日
      */
-    lFestival: any;
+    lFestival: Festival;
 
     constructor() {
         this.festival = {
@@ -679,22 +685,6 @@ class Calendar {
      */
     getLunarFestival() {
         return this.lFestival;
-    }
-
-    /**
-     *
-     * @param param {Object} 按照festival的格式输入数据，设置阳历节日
-     */
-    setFestival(param: any = {}) {
-        this.festival = param;
-    }
-
-    /**
-     *
-     * @param param {Object} 按照lFestival的格式输入数据，设置农历节日
-     */
-    setLunarFestival(param: any = {}) {
-        this.lFestival = param;
     }
 
     /**
@@ -785,8 +775,8 @@ class Calendar {
 
     /**
      * 公历月、日判断所属星座
-     * @param  cMonth [description]
-     * @param  cDay [description]
+     * @param  cMonth 月
+     * @param  cDay 日
      * @return Cn string
      */
     toAstro(cMonth: number, cDay: number) {
