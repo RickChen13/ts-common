@@ -109,6 +109,57 @@ class Time {
 		}
 		return result;
 	}
+
+
+	static shortcuts() {
+		return [
+			{
+				text: '本日',
+				value: () => {
+					const ymd = Time.getDayInfo();
+					const start = Date.parse(`${ymd.Y}-${ymd.m}-${ymd.d} 00:00:00`);
+					const end = Time.microtime();
+					return [start, end];
+				},
+			},
+			{
+				text: '24小时',
+				value: () => {
+					const end = Time.microtime();
+					const start = end - (60 * 60 * 24 * 1000);
+					return [start, end];
+				},
+			},
+			{
+				text: '本周',
+				value: () => {
+					// 获取当前日期
+					let start = Time.getMonday();
+					const end = Time.microtime();
+					return [start, end];
+				},
+			},
+			{
+				text: '本月',
+				value: () => {
+					const ymd = Time.getDayInfo();
+					const start = Date.parse(`${ymd.Y}-${ymd.m}-01 00:00:00`);
+					const end = Time.microtime();
+					return [start, end];
+				},
+			},
+			{
+				text: '上月',
+				value: () => {
+					let ymd = Time.getDayInfo();
+					let end = Date.parse(`${ymd.Y}-${ymd.m}-01 00:00:00`) - 1;
+					ymd = Time.getDayInfo(end);
+					const start = Date.parse(`${ymd.Y}-${ymd.m}-01 00:00:00`);
+					return [start, end];
+				},
+			},
+		];
+	}
 }
 
 export default Time;
