@@ -916,7 +916,6 @@ class Calendar {
         }
 
         //是否今天
-        // eslint-disable-next-line prefer-const
         let isTodayObj = new Date(),
             isToday = false;
         if (
@@ -928,7 +927,6 @@ class Calendar {
         }
         //星期几
         let nWeek = objDate.getDay(),
-            // eslint-disable-next-line prefer-const
             cWeek = this.nStr1[nWeek];
         //数字表示周几顺应天朝周一开始的惯例
         if (nWeek === 0) {
